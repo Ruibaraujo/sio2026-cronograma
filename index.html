@@ -304,11 +304,13 @@
     align-items: flex-end;
     justify-content: center;
     padding-bottom: 5px;
-    font-size: 10px;
+    font-size: 9px;
     color: var(--text-muted);
     border-right: 1px solid var(--border);
     position: relative;
     flex-shrink: 0;
+    letter-spacing: 0;
+    text-align: center;
   }
   .week-cell.today-week {
     color: var(--today-line);
@@ -359,7 +361,7 @@
     z-index: 5;
   }
   .today-line::before {
-    content: 'HOJE';
+    content: attr(data-label);
     position: absolute;
     top: 2px;
     left: 4px;
@@ -826,10 +828,16 @@ function parseDate(str) {
   if (!str) return null;
   const m = String(str).match(/^(\d{4})-(\d{2})-(\d{2})/);
   if (!m) return null;
-  return new Date(m[1], m[2]-1, m[3]);
+  // Criar sempre em hora local (sem UTC) para evitar desfasamento de fuso horário
+  const d = new Date(parseInt(m[1]), parseInt(m[2])-1, parseInt(m[3]));
+  d.setHours(0,0,0,0);
+  return d;
 }
 function daysBetween(a, b) {
-  return Math.round((b - a) / 86400000);
+  // Usar UTC para evitar erros de fuso horário (ex: Portugal UTC+0/+1)
+  const utcA = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
+  const utcB = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
+  return Math.round((utcB - utcA) / 86400000);
 }
 function formatDate(d) {
   if (!d) return '—';
@@ -904,7 +912,7 @@ function init() {
   allTasks = processTasks();
   buckets = groupByBucket(allTasks);
 
-  document.getElementById('exportDate').textContent = 'Exportado em: ' + EXPORT_DATE;
+  document.getElementById('exportDate').textContent = 'Exportado em: ' + EXPORT_DATE + '  |  Hoje: ' + today.toLocaleDateString('pt-PT', {weekday:'short', day:'2-digit', month:'2-digit', year:'numeric'});
 
   // populate filter
   const sel = document.getElementById('filterBucket');
@@ -1000,11 +1008,18 @@ function render() {
   weeks.forEach(w => {
     const cell = document.createElement('div');
     cell.className = 'week-cell';
-    const isToday = w <= today && today < new Date(w.getTime() + 7*86400000);
+    // Comparar apenas datas (sem horas) para evitar erros de fuso horário
+    const wDate = new Date(w.getFullYear(), w.getMonth(), w.getDate());
+    const wEnd = new Date(wDate); wEnd.setDate(wEnd.getDate() + 7);
+    const todayDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+    const isToday = todayDate >= wDate && todayDate < wEnd;
     if (isToday) cell.classList.add('today-week');
     cell.style.width = (7 * dayWidth) + 'px';
     cell.style.flexShrink = '0';
-    cell.textContent = w.toLocaleDateString('pt-PT', { day:'2-digit', month:'2-digit' });
+    const weekEnd = new Date(w); weekEnd.setDate(weekEnd.getDate() + 4); // Seg → Sex
+    const startLabel = w.toLocaleDateString('pt-PT', {day:'2-digit', month:'2-digit'});
+    const endLabel = weekEnd.toLocaleDateString('pt-PT', {day:'2-digit', month:'2-digit'});
+    cell.textContent = `${startLabel} – ${endLabel}`;
     timeHeader.appendChild(cell);
   });
   chartInner.appendChild(timeHeader);
@@ -1042,6 +1057,8 @@ function render() {
     const x = daysBetween(minDate, today) * dayWidth;
     const tl = document.createElement('div');
     tl.className = 'today-line';
+    const todayLabel = today.toLocaleDateString('pt-PT', {day:'2-digit', month:'2-digit'});
+    tl.setAttribute('data-label', `HOJE ${todayLabel}`);
     tl.style.left = x + 'px';
     tl.style.height = totalRowsHeight + 'px';
     chartRows.appendChild(tl);
