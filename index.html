@@ -813,8 +813,13 @@ let dayWidth = 18; // px per day, adjustable via zoom
 let filterBucket = 'all';
 let filterStatus = 'all';
 let collapsedBuckets = new Set();
-const today = new Date();
-today.setHours(0,0,0,0);
+// Sempre calculado no momento do loading da página — nunca em cache
+function getToday() {
+  const d = new Date();
+  d.setHours(0, 0, 0, 0);
+  return d;
+}
+const today = getToday();
 
 // ── HELPERS ───────────────────────────────────────────────────────
 function parseDate(str) {
@@ -857,17 +862,18 @@ function getChartBounds() {
 }
 
 // ── PROCESS TASKS ─────────────────────────────────────────────────
+// Recalcula sempre com base na data de hoje no momento do loading
 function processTasks() {
+  const now = getToday(); // data real de hoje, calculada agora
   return RAW_TASKS.map(t => {
     const due = parseDate(t['Due date']);
     let start = parseDate(t['Start date']);
     if (!start) {
-      // Use 1 week before due as default
       if (due) { start = new Date(due); start.setDate(start.getDate() - 7); }
       else start = parseDate(t['Created Date']) || new Date();
     }
     const isMilestone = start.getTime() === due?.getTime();
-    const isLate = t.Status !== 'Completed' && due && due < today;
+    const isLate = t.Status !== 'Completed' && due && due < now;
     const progress = t.Status === 'Completed' ? 100 : t.Status === 'In progress' ? 50 : 0;
     return { ...t, startDate: start, dueDate: due, isMilestone, isLate, progress };
   });
