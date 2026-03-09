@@ -14,25 +14,20 @@
     --text: #e8eaf0;
     --text-muted: #6b7280;
     --text-dim: #9ca3b0;
-
     --coord:    #6c8eff;
     --logistica:#f97316;
     --programa: #22d3a0;
     --comms:    #e879f9;
     --patroc:   #facc15;
     --acomp:    #f87171;
-
     --done:     #22c55e;
     --progress: #3b82f6;
     --todo:     #64748b;
     --late:     #ef4444;
-
     --today-line: #ff6b6b;
     --milestone: #ffd700;
   }
-
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
   body {
     background: var(--bg);
     color: var(--text);
@@ -40,8 +35,6 @@
     font-size: 13px;
     min-height: 100vh;
   }
-
-  /* ── HEADER ── */
   .header {
     padding: 28px 32px 20px;
     border-bottom: 1px solid var(--border);
@@ -74,8 +67,6 @@
     border-radius: 6px;
     border: 1px solid var(--border);
   }
-
-  /* ── STATS BAR ── */
   .stats-bar {
     display: flex;
     gap: 20px;
@@ -91,14 +82,8 @@
     font-size: 12px;
     color: var(--text-dim);
   }
-  .stat-dot {
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
+  .stat-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
   .stat strong { color: var(--text); font-weight: 500; }
-
-  /* ── CONTROLS ── */
   .controls {
     display: flex;
     gap: 12px;
@@ -126,32 +111,17 @@
     cursor: pointer;
     transition: border-color 0.15s, background 0.15s;
   }
-  .controls select:hover, .controls button:hover {
-    border-color: var(--coord);
-    background: var(--surface2);
-  }
-  .btn-today {
-    background: var(--coord) !important;
-    color: #fff !important;
-    border-color: var(--coord) !important;
-    font-weight: 500;
-  }
-  .controls .sep {
-    width: 1px; height: 24px;
-    background: var(--border);
-  }
+  .controls select:hover, .controls button:hover { border-color: var(--coord); }
+  .btn-today { background: var(--coord) !important; color: #fff !important; border-color: var(--coord) !important; font-weight: 500; }
+  .controls .sep { width: 1px; height: 24px; background: var(--border); }
   .zoom-group { display: flex; gap: 4px; }
   .zoom-group button { padding: 6px 10px; font-size: 14px; }
-
-  /* ── MAIN LAYOUT ── */
   .gantt-wrapper {
     display: flex;
     height: calc(100vh - 195px);
     min-height: 400px;
     overflow: hidden;
   }
-
-  /* ── LEFT PANEL ── */
   .task-panel {
     width: 320px;
     min-width: 320px;
@@ -172,15 +142,10 @@
     background: var(--surface2);
     flex-shrink: 0;
   }
-  .task-list {
-    overflow-y: auto;
-    flex: 1;
-  }
+  .task-list { overflow-y: auto; flex: 1; }
   .task-list::-webkit-scrollbar { width: 4px; }
   .task-list::-webkit-scrollbar-track { background: transparent; }
   .task-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
-
-  /* bucket header */
   .bucket-header {
     display: flex;
     align-items: center;
@@ -202,17 +167,9 @@
   .bucket-header:hover { background: #252b3a; }
   .bucket-dot { width: 6px; height: 6px; border-radius: 50%; }
   .bucket-name { flex: 1; }
-  .bucket-count {
-    background: var(--surface);
-    color: var(--text-muted);
-    padding: 1px 7px;
-    border-radius: 10px;
-    font-size: 10px;
-  }
+  .bucket-count { background: var(--surface); color: var(--text-muted); padding: 1px 7px; border-radius: 10px; font-size: 10px; }
   .bucket-toggle { color: var(--text-muted); font-size: 10px; transition: transform 0.2s; }
   .bucket-toggle.collapsed { transform: rotate(-90deg); }
-
-  /* task row */
   .task-row {
     display: grid;
     grid-template-columns: 1fr 80px 70px;
@@ -225,58 +182,19 @@
   }
   .task-row:hover { background: #1a2035; }
   .task-row.highlighted { background: #1e2a45; }
-  .task-name {
-    font-size: 12px;
-    color: var(--text);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    padding-right: 8px;
-  }
+  .task-name { font-size: 12px; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding-right: 8px; }
   .task-name .late-icon { color: var(--late); margin-left: 4px; }
-  .task-assignee {
-    font-size: 10px;
-    color: var(--text-muted);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  .status-badge {
-    font-size: 9px;
-    padding: 2px 7px;
-    border-radius: 4px;
-    text-transform: uppercase;
-    letter-spacing: 0.3px;
-    font-weight: 500;
-    text-align: center;
-    white-space: nowrap;
-  }
+  .task-assignee { font-size: 10px; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .status-badge { font-size: 9px; padding: 2px 7px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.3px; font-weight: 500; text-align: center; white-space: nowrap; }
   .status-Completed { background: #14532d; color: #4ade80; }
   .status-In-progress { background: #1e3a5f; color: #60a5fa; }
   .status-Not-started { background: #1e2333; color: #64748b; }
-
-  /* ── RIGHT (GANTT) PANEL ── */
-  .chart-panel {
-    flex: 1;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-  }
-  .chart-scroll {
-    overflow-x: auto;
-    overflow-y: auto;
-    flex: 1;
-  }
+  .chart-panel { flex: 1; overflow: hidden; display: flex; flex-direction: column; position: relative; }
+  .chart-scroll { overflow-x: auto; overflow-y: auto; flex: 1; }
   .chart-scroll::-webkit-scrollbar { height: 6px; width: 4px; }
   .chart-scroll::-webkit-scrollbar-track { background: transparent; }
   .chart-scroll::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
-
-  .chart-inner {
-    position: relative;
-  }
-
-  /* time header */
+  .chart-inner { position: relative; }
   .time-header {
     position: sticky;
     top: 0;
@@ -312,54 +230,15 @@
     letter-spacing: 0;
     text-align: center;
   }
-  .week-cell.today-week {
-    color: var(--today-line);
-    font-weight: 600;
-  }
-
-  /* grid rows */
-  .chart-rows {
-    position: relative;
-  }
-  .chart-row {
-    height: 36px;
-    border-bottom: 1px solid #1a1f2e;
-    position: relative;
-  }
+  .week-cell.today-week { color: var(--today-line); font-weight: 600; }
+  .chart-rows { position: relative; }
+  .chart-row { height: 36px; border-bottom: 1px solid #1a1f2e; position: relative; }
   .chart-row:hover .row-bg { opacity: 1; }
-  .row-bg {
-    position: absolute;
-    inset: 0;
-    background: rgba(255,255,255,0.015);
-    opacity: 0;
-    transition: opacity 0.1s;
-    pointer-events: none;
-  }
-  .bucket-spacer {
-    height: 31px;
-    border-bottom: 1px solid var(--border);
-    background: var(--surface2);
-  }
-
-  /* vertical grid lines */
-  .grid-line {
-    position: absolute;
-    top: 0; bottom: 0;
-    width: 1px;
-    background: #1e2333;
-    pointer-events: none;
-  }
+  .row-bg { position: absolute; inset: 0; background: rgba(255,255,255,0.015); opacity: 0; transition: opacity 0.1s; pointer-events: none; }
+  .bucket-spacer { height: 31px; border-bottom: 1px solid var(--border); background: var(--surface2); }
+  .grid-line { position: absolute; top: 0; bottom: 0; width: 1px; background: #1e2333; pointer-events: none; }
   .grid-line.month { background: #2a2f42; }
-
-  /* today line */
-  .today-line {
-    position: absolute;
-    top: 0; bottom: 0;
-    width: 2px;
-    background: var(--today-line);
-    pointer-events: none;
-    z-index: 5;
-  }
+  .today-line { position: absolute; top: 0; bottom: 0; width: 2px; background: var(--today-line); pointer-events: none; z-index: 5; }
   .today-line::before {
     content: attr(data-label);
     position: absolute;
@@ -370,8 +249,6 @@
     letter-spacing: 0.5px;
     white-space: nowrap;
   }
-
-  /* ── BARS ── */
   .gantt-bar {
     position: absolute;
     height: 18px;
@@ -386,30 +263,9 @@
     min-width: 4px;
     z-index: 3;
   }
-  .gantt-bar:hover {
-    filter: brightness(1.25);
-    transform: translateY(-50%) scaleY(1.1);
-    z-index: 10;
-  }
-  .bar-progress {
-    position: absolute;
-    left: 0; top: 0; bottom: 0;
-    background: rgba(255,255,255,0.25);
-    pointer-events: none;
-  }
-  .bar-label {
-    font-size: 10px;
-    color: rgba(255,255,255,0.9);
-    padding: 0 6px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    position: relative;
-    z-index: 1;
-    pointer-events: none;
-  }
-
-  /* milestone diamond */
+  .gantt-bar:hover { filter: brightness(1.25); transform: translateY(-50%) scaleY(1.1); z-index: 10; }
+  .bar-progress { position: absolute; left: 0; top: 0; bottom: 0; background: rgba(255,255,255,0.25); pointer-events: none; }
+  .bar-label { font-size: 10px; color: rgba(255,255,255,0.9); padding: 0 6px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; position: relative; z-index: 1; pointer-events: none; }
   .gantt-milestone {
     position: absolute;
     width: 12px; height: 12px;
@@ -420,12 +276,7 @@
     transition: transform 0.1s;
     border-radius: 2px;
   }
-  .gantt-milestone:hover {
-    transform: translateY(-50%) rotate(45deg) scale(1.3);
-    filter: brightness(1.3);
-  }
-
-  /* ── TOOLTIP (hover rápido) ── */
+  .gantt-milestone:hover { transform: translateY(-50%) rotate(45deg) scale(1.3); filter: brightness(1.3); }
   .tooltip {
     position: fixed;
     background: #1a1f2e;
@@ -440,36 +291,10 @@
     box-shadow: 0 8px 32px rgba(0,0,0,0.5);
   }
   .tooltip.visible { opacity: 1; }
-  .tt-title {
-    font-size: 12px;
-    font-weight: 500;
-    color: #fff;
-    margin-bottom: 6px;
-    line-height: 1.4;
-  }
-  .tt-hint {
-    font-size: 10px;
-    color: var(--coord);
-    margin-top: 6px;
-    padding-top: 6px;
-    border-top: 1px solid var(--border);
-    opacity: 0.8;
-  }
-
-  /* ── DETAIL PANEL ── */
-  .detail-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.5);
-    z-index: 200;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.2s;
-  }
-  .detail-overlay.open {
-    opacity: 1;
-    pointer-events: all;
-  }
+  .tt-title { font-size: 12px; font-weight: 500; color: #fff; margin-bottom: 6px; line-height: 1.4; }
+  .tt-hint { font-size: 10px; color: var(--coord); margin-top: 6px; padding-top: 6px; border-top: 1px solid var(--border); opacity: 0.8; }
+  .detail-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 200; opacity: 0; pointer-events: none; transition: opacity 0.2s; }
+  .detail-overlay.open { opacity: 1; pointer-events: all; }
   .detail-panel {
     position: fixed;
     top: 0; right: 0; bottom: 0;
@@ -484,214 +309,35 @@
     transition: transform 0.25s cubic-bezier(0.4,0,0.2,1);
     box-shadow: -8px 0 40px rgba(0,0,0,0.4);
   }
-  .detail-panel.open {
-    transform: translateX(0);
-  }
-  .dp-header {
-    padding: 20px 24px 16px;
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    flex-shrink: 0;
-  }
-  .dp-status-dot {
-    width: 10px; height: 10px;
-    border-radius: 50%;
-    margin-top: 5px;
-    flex-shrink: 0;
-  }
-  .dp-title {
-    font-family: 'DM Serif Display', serif;
-    font-size: 20px;
-    color: #fff;
-    line-height: 1.3;
-    flex: 1;
-  }
-  .dp-close {
-    background: none;
-    border: none;
-    color: var(--text-muted);
-    font-size: 20px;
-    cursor: pointer;
-    padding: 0 4px;
-    line-height: 1;
-    flex-shrink: 0;
-    transition: color 0.15s;
-  }
+  .detail-panel.open { transform: translateX(0); }
+  .dp-header { padding: 20px 24px 16px; border-bottom: 1px solid var(--border); display: flex; align-items: flex-start; gap: 12px; flex-shrink: 0; }
+  .dp-status-dot { width: 10px; height: 10px; border-radius: 50%; margin-top: 5px; flex-shrink: 0; }
+  .dp-title { font-family: 'DM Serif Display', serif; font-size: 20px; color: #fff; line-height: 1.3; flex: 1; }
+  .dp-close { background: none; border: none; color: var(--text-muted); font-size: 20px; cursor: pointer; padding: 0 4px; line-height: 1; flex-shrink: 0; transition: color 0.15s; }
   .dp-close:hover { color: var(--text); }
-
-  .dp-meta {
-    padding: 16px 24px;
-    border-bottom: 1px solid var(--border);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    flex-shrink: 0;
-  }
-  .dp-meta-item {}
-  .dp-meta-label {
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    color: var(--text-muted);
-    margin-bottom: 3px;
-  }
-  .dp-meta-value {
-    font-size: 12px;
-    color: var(--text);
-  }
-  .dp-status-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    padding: 3px 10px;
-    border-radius: 5px;
-    font-size: 11px;
-    font-weight: 500;
-  }
-
-  .dp-notes-section {
-    padding: 20px 24px;
-    flex: 1;
-    overflow-y: auto;
-  }
+  .dp-meta { padding: 16px 24px; border-bottom: 1px solid var(--border); display: grid; grid-template-columns: 1fr 1fr; gap: 12px; flex-shrink: 0; }
+  .dp-meta-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); margin-bottom: 3px; }
+  .dp-meta-value { font-size: 12px; color: var(--text); }
+  .dp-status-badge { display: inline-flex; align-items: center; gap: 5px; padding: 3px 10px; border-radius: 5px; font-size: 11px; font-weight: 500; }
+  .dp-notes-section { padding: 20px 24px; flex: 1; overflow-y: auto; }
   .dp-notes-section::-webkit-scrollbar { width: 4px; }
   .dp-notes-section::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
-
-  .dp-section-label {
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-    color: var(--text-muted);
-    margin-bottom: 12px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .dp-section-label::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-  }
-
-  .dp-notes-content {
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 16px;
-    font-size: 13px;
-    color: var(--text-dim);
-    line-height: 1.7;
-    white-space: pre-wrap;
-    word-break: break-word;
-    min-height: 80px;
-  }
-  .dp-notes-empty {
-    font-size: 12px;
-    color: var(--text-muted);
-    font-style: italic;
-    padding: 16px;
-    text-align: center;
-    background: var(--surface2);
-    border: 1px dashed var(--border);
-    border-radius: 8px;
-  }
-
-  .dp-assignees {
-    margin-top: 20px;
-  }
-  .dp-assignee-list {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    margin-top: 10px;
-  }
-  .dp-assignee-chip {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 7px 12px;
-    font-size: 12px;
-    color: var(--text-dim);
-  }
-  .dp-assignee-avatar {
-    width: 24px; height: 24px;
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 10px;
-    font-weight: 600;
-    color: #fff;
-    flex-shrink: 0;
-  }
-
-  .dp-footer {
-    padding: 12px 24px;
-    border-top: 1px solid var(--border);
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .dp-late-badge {
-    background: #2d1515;
-    color: #ef4444;
-    border: 1px solid #3d1f1f;
-    padding: 4px 10px;
-    border-radius: 5px;
-    font-size: 11px;
-  }
-  .dp-progress-bar {
-    flex: 1;
-    height: 4px;
-    background: var(--surface2);
-    border-radius: 2px;
-    overflow: hidden;
-  }
-  .dp-progress-fill {
-    height: 100%;
-    border-radius: 2px;
-    transition: width 0.3s;
-  }
-
-  /* ── LEGEND ── */
-  .legend {
-    display: flex;
-    gap: 20px;
-    padding: 10px 32px;
-    background: var(--surface);
-    border-top: 1px solid var(--border);
-    flex-wrap: wrap;
-    flex-shrink: 0;
-  }
-  .legend-item {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 11px;
-    color: var(--text-muted);
-  }
-  .legend-bar {
-    width: 20px; height: 8px;
-    border-radius: 2px;
-  }
-  .legend-diamond {
-    width: 8px; height: 8px;
-    background: var(--milestone);
-    transform: rotate(45deg);
-    border-radius: 1px;
-  }
-
-  .hidden-bucket .task-row,
-  .hidden-bucket .chart-row { display: none !important; }
-  .hidden-bucket .bucket-spacer { display: none !important; }
-
-  /* progress ring */
-  .progress-ring { position: relative; display: inline-flex; align-items: center; }
+  .dp-section-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.8px; color: var(--text-muted); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+  .dp-section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  .dp-notes-content { background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 16px; font-size: 13px; color: var(--text-dim); line-height: 1.7; white-space: pre-wrap; word-break: break-word; min-height: 80px; }
+  .dp-notes-empty { font-size: 12px; color: var(--text-muted); font-style: italic; padding: 16px; text-align: center; background: var(--surface2); border: 1px dashed var(--border); border-radius: 8px; }
+  .dp-assignees { margin-top: 20px; }
+  .dp-assignee-list { display: flex; flex-direction: column; gap: 6px; margin-top: 10px; }
+  .dp-assignee-chip { display: flex; align-items: center; gap: 8px; background: var(--surface2); border: 1px solid var(--border); border-radius: 6px; padding: 7px 12px; font-size: 12px; color: var(--text-dim); }
+  .dp-assignee-avatar { width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 600; color: #fff; flex-shrink: 0; }
+  .dp-footer { padding: 12px 24px; border-top: 1px solid var(--border); flex-shrink: 0; display: flex; align-items: center; gap: 8px; }
+  .dp-late-badge { background: #2d1515; color: #ef4444; border: 1px solid #3d1f1f; padding: 4px 10px; border-radius: 5px; font-size: 11px; }
+  .dp-progress-bar { flex: 1; height: 4px; background: var(--surface2); border-radius: 2px; overflow: hidden; }
+  .dp-progress-fill { height: 100%; border-radius: 2px; transition: width 0.3s; }
+  .legend { display: flex; gap: 20px; padding: 10px 32px; background: var(--surface); border-top: 1px solid var(--border); flex-wrap: wrap; flex-shrink: 0; }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--text-muted); }
+  .legend-bar { width: 20px; height: 8px; border-radius: 2px; }
+  .legend-diamond { width: 8px; height: 8px; background: var(--milestone); transform: rotate(45deg); border-radius: 1px; }
 </style>
 </head>
 <body>
@@ -755,7 +401,6 @@
 
 <div class="tooltip" id="tooltip"></div>
 
-<!-- Detail Panel -->
 <div class="detail-overlay" id="detailOverlay" onclick="closeDetailPanel()"></div>
 <div class="detail-panel" id="detailPanel">
   <div class="dp-header">
@@ -769,53 +414,816 @@
 </div>
 
 <script>
-// ── DATA ──────────────────────────────────────────────────────────────
 const RAW_TASKS = [
-  {"Task ID":"-yeXLdE74keC1S8yNvVl_pYAJb2Y","Task Name":"Selecionar Oradores e Moderadores","Bucket Name":"Equipa de Coordenação","Status":"Not started","Priority":"Important","Assigned To":null,"Created Date":"2026-02-16T18:38:02.3282977Z","Due date":"2026-03-10T10:00:00+00:00","Start date":null,"Late":"false","Completed Date":null,"Labels":"Data Importante","Description":null},
-  {"Task ID":"1mLtYGoBqkCdYsZs9zeZrJYAP-f7","Task Name":"Contactar com Parceiros","Bucket Name":"Equipa de Coordenação","Status":"Not started","Priority":"Important","Assigned To":null,"Created Date":"2026-02-16T18:37:30.4786371Z","Due date":"2026-03-03T10:00:00+00:00","Start date":null,"Late":"false","Completed Date":null,"Labels":"Data Importante","Description":null},
-  {"Task ID":"DnCacAZnD0W0z3CYySxTG5YACA2_","Task Name":"Seminário","Bucket Name":"Equipa de Coordenação","Status":"In progress","Priority":"Urgent","Assigned To":null,"Created Date":"2026-02-16T16:30:45.1230668Z","Due date":"2026-05-26T10:00:00+00:00","Start date":"2026-05-26T10:00:00+00:00","Late":"false","Completed Date":null,"Labels":"Data Importante","Description":null},
-  {"Task ID":"KEGJYv3KBEiypZF62wzpt5YAHHXe","Task Name":"Início da Divulgação a 28/04","Bucket Name":"Equipa de Coordenação","Status":"Not started","Priority":"Important","Assigned To":null,"Created Date":"2026-02-16T18:40:17.5383963Z","Due date":"2026-05-25T10:00:00+00:00","Start date":"2026-04-28T10:00:00+00:00","Late":"false","Completed Date":null,"Labels":"Data Importante","Description":"Começar a divulgar o seminário e terminar até à véspera do mesmo ou até esgotarem as inscrições"},
-  {"Task ID":"RyWxD-ELDEq2BrqOWA2j15YAKvUx","Task Name":"Confirmar Oradores/Moderadores + Definir Identidade Visual","Bucket Name":"Equipa de Coordenação","Status":"Not started","Priority":"Important","Assigned To":null,"Created Date":"2026-02-16T18:39:07.1041358Z","Due date":"2026-04-14T10:00:00+00:00","Start date":null,"Late":"false","Completed Date":null,"Labels":"Data Importante","Description":null},
-  {"Task ID":"W7zMaDo-QE6OUS3Uj9Sa_5YAJVYZ","Task Name":"Criação do Cronograma","Bucket Name":"Equipa de Coordenação","Status":"Completed","Priority":"Important","Assigned To":"Cristiana Filipa Cunha Pinheiro","Created Date":"2026-02-16T16:17:00.7378386Z","Due date":"2026-02-21T10:00:00+00:00","Start date":"2026-02-14T10:00:00+00:00","Late":"false","Completed Date":"2026-02-21T16:34:02.9515971Z","Labels":null,"Description":"Feito pela Cristiana Pinheiro no Planner"},
-  {"Task ID":"XVCERrPhT022cuVQqcaHMpYAI9n1","Task Name":"Criação de Formulário para colocação de estudantes em equipas","Bucket Name":"Equipa de Coordenação","Status":"Completed","Priority":"Important","Assigned To":"Rui Miguel Teixeira Borges De Araújo","Created Date":"2026-02-16T16:15:10.4527753Z","Due date":"2026-02-16T10:00:00+00:00","Start date":"2026-02-14T10:00:00+00:00","Late":"false","Completed Date":"2026-02-16T16:15:27.4855489Z","Labels":null,"Description":null},
-  {"Task ID":"ZCLdzzs3Kk6GokokMUhnV5YAEXJn","Task Name":"Procura de auditórios no Porto","Bucket Name":"Equipa de Coordenação","Status":"Completed","Priority":"Important","Assigned To":"Ana Sofia Gonçalves Vaz","Created Date":"2026-02-16T16:13:44.9626663Z","Due date":"2026-02-21T10:00:00+00:00","Start date":"2026-02-14T10:00:00+00:00","Late":"false","Completed Date":"2026-02-21T13:12:37.6021883Z","Labels":null,"Description":"ÚNICA RESPOSTA-POLO ZERO"},
-  {"Task ID":"c7ozahQs8EyyyQKyzmWGYJYAGXLC","Task Name":"Reserva de Auditório","Bucket Name":"Equipa de Coordenação","Status":"In progress","Priority":"Urgent","Assigned To":null,"Created Date":"2026-02-16T18:36:42.049377Z","Due date":"2026-02-24T10:00:00+00:00","Start date":null,"Late":"false","Completed Date":null,"Labels":"Data Importante","Description":"Começamos a reunir propostas para apresentar na aula de dia 24/02"},
-  {"Task ID":"eHtw7QtkT0KUsnxR2hkrEZYAEcLm","Task Name":"Início das Inscrições a 12/05","Bucket Name":"Equipa de Coordenação","Status":"Not started","Priority":"Important","Assigned To":null,"Created Date":"2026-02-16T18:41:35.4968506Z","Due date":"2026-05-25T10:00:00+00:00","Start date":"2026-05-12T10:00:00+00:00","Late":"false","Completed Date":null,"Labels":"Data Importante","Description":"Inscrições abertas até à véspera do seminário ou até esgotarem"},
-  {"Task ID":"ebgcZrv1Y0uxzBj86olsTJYAG7OU","Task Name":"Formação de Equipas de Trabalho","Bucket Name":"Equipa de Coordenação","Status":"In progress","Priority":"Urgent","Assigned To":null,"Created Date":"2026-02-16T18:34:23.6195988Z","Due date":"2026-02-24T10:00:00+00:00","Start date":null,"Late":"false","Completed Date":null,"Labels":"Data Importante","Description":null},
-  {"Task ID":"gbeX7bmEf0iuXE5sDwZ2HZYANP8E","Task Name":"Reunião com a Professora Margarida na aula de 24/2","Bucket Name":"Equipa de Coordenação","Status":"Not started","Priority":"Urgent","Assigned To":null,"Created Date":"2026-02-16T16:19:48.6389029Z","Due date":"2026-02-24T10:00:00+00:00","Start date":"2026-02-24T10:00:00+00:00","Late":"false","Completed Date":null,"Labels":null,"Description":"1) Regulamento interno por equipa, ou por subequipa?\n2) Perguntar à professora como é que fazemos em relação aos estudantes que lembram-se a meio do semestre que estão matriculados em SIO.\n3) Discutir as expectativas da equipa de coordenação com a Prof Margarida"},
-  {"Task ID":"nYFJgUEAu0KC_3fklCl4YZYAMaaK","Task Name":"Estudo sobre Formação de Equipas de Trabalho","Bucket Name":"Equipa de Coordenação","Status":"Completed","Priority":"Important","Assigned To":"Joel Sampaio Pinto;Ana Sofia Gonçalves Vaz;Maria Do Carmo Brito Carneiro;Rui Miguel Teixeira Borges De Araújo;Cristiana Filipa Cunha Pinheiro","Created Date":"2026-02-16T16:10:12.0641335Z","Due date":"2026-02-21T10:00:00+00:00","Start date":"2026-02-14T10:00:00+00:00","Late":"false","Completed Date":"2026-02-21T13:11:37.2645017Z","Labels":null,"Description":null},
-  {"Task ID":"vcHiWPPzPUOaUmcn_neadZYANkIZ","Task Name":"Confirmação de Patrocínios e Adaptações na Logística","Bucket Name":"Equipa de Coordenação","Status":"Not started","Priority":"Important","Assigned To":null,"Created Date":"2026-02-16T18:43:08.7663195Z","Due date":"2026-05-19T10:00:00+00:00","Start date":null,"Late":"false","Completed Date":null,"Labels":"Data Importante","Description":null},
-  {"Task ID":"w8PJMuh-MEmue8TaUe1tepYAFV8F","Task Name":"Criação do Regulamento Interno da Equipa de Coordenação","Bucket Name":"Equipa de Coordenação","Status":"Completed","Priority":"Important","Assigned To":"Joel Sampaio Pinto","Created Date":"2026-02-16T16:16:13.9235287Z","Due date":"2026-02-21T10:00:00+00:00","Start date":"2026-02-14T10:00:00+00:00","Late":"false","Completed Date":"2026-02-21T16:36:00.5532346Z","Labels":null,"Description":null},
-  {"Task ID":"yCyhRQq9qESK-uk-nBG3jZYAOxZd","Task Name":"Composição do Programa","Bucket Name":"Equipa de Coordenação","Status":"Not started","Priority":"Important","Assigned To":null,"Created Date":"2026-02-16T18:39:35.736209Z","Due date":"2026-04-21T10:00:00+00:00","Start date":null,"Late":"false","Completed Date":null,"Labels":"Data Importante","Description":null},
-  {"Task ID":"yiOG6dDgDEC4jnqhnOZ345YADbh3","Task Name":"Convidar Oradores e Moderadores","Bucket Name":"Equipa de Coordenação","Status":"Not started","Priority":"Important","Assigned To":null,"Created Date":"2026-02-16T18:38:26.5950831Z","Due date":"2026-03-24T10:00:00+00:00","Start date":null,"Late":"false","Completed Date":null,"Labels":"Data Importante","Description":null}
+  {
+    "Task ID": "-8kAIYTpDESF8WXiHWBhEpYAJwDX",
+    "Task Name": "Definição da tipologia do sistema de recolha de presenças",
+    "Bucket Name": "Equipa de Acompanhamento e Avaliação",
+    "Status": "Not started",
+    "Priority": "Important",
+    "Assigned To": null,
+    "Created Date": "2026-03-09T20:26:56.9392286Z",
+    "Due date": "2026-03-12T10:00:00+00:00",
+    "Start date": "2026-03-07T10:00:00+00:00",
+    "Late": "false",
+    "Completed Date": null,
+    "Labels": null,
+    "Description": "Análise de todos os membros do grupo do sistema previamente desenvolvido e sugestão de possível alterações caso necessário"
+  },
+  {
+    "Task ID": "-OkTW10G00e_TlHfExGhQ5YAHGlH",
+    "Task Name": "Criação do template do Certificado",
+    "Bucket Name": "Equipa de Acompanhamento e Avaliação",
+    "Status": "Not started",
+    "Priority": "Important",
+    "Assigned To": null,
+    "Created Date": "2026-03-09T20:32:51.4610693Z",
+    "Due date": "2026-03-19T10:00:00+00:00",
+    "Start date": "2026-03-13T10:00:00+00:00",
+    "Late": "false",
+    "Completed Date": null,
+    "Labels": null,
+    "Description": "Design do certificado de participação"
+  },
+  {
+    "Task ID": "-yeXLdE74keC1S8yNvVl_pYAJb2Y",
+    "Task Name": "Selecionar Oradores e Moderadores",
+    "Bucket Name": "Equipa de Coordenação",
+    "Status": "Not started",
+    "Priority": "Important",
+    "Assigned To": null,
+    "Created Date": "2026-02-16T18:38:02.3282977Z",
+    "Due date": "2026-03-10T10:00:00+00:00",
+    "Start date": null,
+    "Late": "false",
+    "Completed Date": null,
+    "Labels": "Externo",
+    "Description": null
+  },
+  {
+    "Task ID": "1mLtYGoBqkCdYsZs9zeZrJYAP-f7",
+    "Task Name": "Contactar com Parceiros",
+    "Bucket Name": "Equipa de Coordenação",
+    "Status": "Not started",
+    "Priority": "Urgent",
+    "Assigned To": null,
+    "Created Date": "2026-02-16T18:37:30.4786371Z",
+    "Due date": "2026-04-01T10:00:00+00:00",
+    "Start date": "2026-02-24T10:00:00+00:00",
+    "Late": "false",
+    "Completed Date": null,
+    "Labels": "Externo",
+    "Description": null
+  },
+  {
+    "Task ID": "6t7DHN02UUKDg2M22S7LoZYAL9Qb",
+    "Task Name": "Definição das variáveis do certificado",
+    "Bucket Name": "Equipa de Acompanhamento e Avaliação",
+    "Status": "Not started",
+    "Priority": "Low",
+    "Assigned To": null,
+    "Created Date": "2026-03-09T20:31:45.7495337Z",
+    "Due date": "2026-03-16T10:00:00+00:00",
+    "Start date": "2026-03-13T10:00:00+00:00",
+    "Late": "false",
+    "Completed Date": null,
+    "Labels": null,
+    "Description": "Definir que informação pessoal do participante irá ser incluída no certificado"
+  },
+  {
+    "Task ID": "8RN71TgOr0OAiJoQqPVwJ5YANlBD",
+    "Task Name": "Confirmação final de brindes e patrocínios",
+    "Bucket Name": "Equipa de Angariação de Patrocínios",
+    "Status": "Not started",
+    "Priority": "Medium",
+    "Assigned To": null,
+    "Created Date": "2026-03-06T18:29:38.9760366Z",
+    "Due date": "2026-05-20T10:00:00+00:00",
+    "Start date": "2026-05-18T10:00:00+00:00",
+    "Late": "false",
+    "Completed Date": null,
+    "Labels": null,
+    "Description": "Sub-Equipa: Angariação Patrocínios e Parcerias"
+  },
+  {
+    "Task ID": "AXBpRZaCq0KfY9EwmJgMl5YAIyIc",
+    "Task Name": "Criação de gráficos",
+    "Bucket Name": "Equipa de Acompanhamento e Avaliação",
+    "Status": "Not started",
+    "Priority": "Medium",
+    "Assigned To": null,
+    "Created Date": "2026-03-09T20:35:39.8736187Z",
+    "Due date": "2026-05-28T10:00:00+00:00",
+    "Start date": "2026-05-27T10:00:00+00:00",
+    "Late": "false",
+    "Completed Date": null,
+    "Labels": null,
+    "Description": "Estatísticas do evento"
+  },
+  {
+    "Task ID": "AkFsva60AUS-n2zoXTsURpYAAxRw",
+    "Task Name": "Limpeza e tratamento de dados",
+    "Bucket Name": "Equipa de Acompanhamento e Avaliação",
+    "Status": "Not started",
+    "Priority": "Medium",
+    "Assigned To": null,
+    "Created Date": "2026-03-09T20:33:54.1953189Z",
+    "Due date": "2026-05-27T10:00:00+00:00",
+    "Start date": "2026-05-26T10:00:00+00:00",
+    "Late": "false",
+    "Completed Date": null,
+    "Labels": null,
+    "Description": "Dados de participação do seminário externo"
+  },
+  {
+    "Task ID": "DV52LgI4eUSMJq3kkMHp4JYAK-NE",
+    "Task Name": "Recolha de potenciais interessados",
+    "Bucket Name": "Equipa de Angariação de Patrocínios",
+    "Status": "Not started",
+    "Priority": "Medium",
+    "Assigned To": null,
+    "Created Date": "2026-03-07T23:08:08.3266326Z",
+    "Due date": "2026-03-13T10:00:00+00:00",
+    "Start date": "2026-03-09T10:00:00+00:00",
+    "Late": "false",
+    "Completed Date": null,
+    "Labels": null,
+    "Description": "Sub-equipa: Mostra Tecnológica e Networking"
+  },
+  {
+    "Task ID": "DZRGOIdzO0CgFqxjIOkk-pYANyct",
+    "Task Name": "Atualização e gestão do dinheiro arrecadado",
+    "Bucket Name": "Equipa de Angariação de Patrocínios",
+    "Status": "Not started",
+    "Priority": "Medium",
+    "Assigned To": null,
+    "Created Date": "2026-03-06T18:28:07.7313536Z",
+    "Due date": "2026-05-15T10:00:00+00:00",
+    "Start date": "2026-04-21T10:00:00+00:00",
+    "Late": "false",
+    "Completed Date": null,
+    "Labels": null,
+    "Description": "Sub-Equipa: Angariação Patrocínios e Parcerias"
+  },
+  {
+    "Task ID": "DnCacAZnD0W0z3CYySxTG5YACA2_",
+    "Task Name": "Seminário",
+    "Bucket Name": "Equipa de Coordenação",
+    "Status": "In progress",
+    "Priority": "Urgent",
+    "Assigned To": null,
+    "Created Date": "2026-02-16T16:30:45.1230668Z",
+    "Due date": "2026-05-26T10:00:00+00:00",
+    "Start date": "2026-05-26T10:00:00+00:00",
+    "Late": "false",
+    "Completed Date": null,
+    "Labels": "Externo",
+    "Description": null
+  },
+  {
+    "Task ID": "IZa277am00OKE-n4slgqJ5YAD7eC",
+    "Task Name": "Discução de possibilidades de atividades dentro da equipa e com equipa de logística",
+    "Bucket Name": "Equipa de Angariação de Patrocínios",
+    "Status": "Not started",
+    "Priority": "Medium",
+    "Assigned To": null,
+    "Created Date": "2026-03-07T23:11:06.6194686Z",
+    "Due date": "2026-04-24T10:00:00+00:00",
+    "Start date": "2026-04-20T10:00:00+00:00",
+    "Late": "false",
+    "Completed Date": null,
+    "Labels": null,
+    "Description": "Sub-equipa: Mostra Tecnológica e Networking"
+  },
+  {
+    "Task ID": "KEGJYv3KBEiypZF62wzpt5YAHHXe",
+    "Task Name": "Início da Divulgação a 28/04",
+    "Bucket Name": "Equipa de Coordenação",
+    "Status": "Not started",
+    "Priority": "Important",
+    "Assigned To": null,
+    "Created Date": "2026-02-16T18:40:17.5383963Z",
+    "Due date": "2026-05-25T10:00:00+00:00",
+    "Start date": "2026-04-28T10:00:00+00:00",
+    "Late": "false",
+    "Completed Date": null,
+    "Labels": "Externo",
+    "Description": "Começar a divulgar o seminário e terminar até à véspera do mesmo ou até esgotarem as inscrições"
+  },
+  {
+    "Task ID": "Khp1VqCRWkOvGU6ItnxPSZYAI_Jt",
+    "Task Name": "Definição do formato dos formulários de feeedback",
+    "Bucket Name": "Equipa de Acompanhamento e Avaliação",
+    "Status": "Not started",
+    "Priority": "Medium",
+    "Assigned To": null,
+    "Created Date": "2026-03-09T20:27:55.5422435Z",
+    "Due date": "2026-03-12T10:00:00+00:00",
+    "Start date": "2026-03-07T10:00:00+00:00",
+    "Late": "false",
+    "Completed Date": null,
+    "Labels": null,
+    "Description": "Escolha da plataforma e formato a utilizar para os formulários dos participantes e oradores"
+  },
+  {
+    "Task ID": "NTPoA3Er206p8eiI8ivMOJYAJObO",
+    "Task Name": "Últimas preparações",
+    "Bucket Name": "Equipa de Angariação de Patrocínios",
+    "Status": "Not started",
+    "Priority": "Medium",
+    "Assigned To": null,
+    "Created Date": "2026-03-07T23:12:37.1623128Z",
+    "Due date": "2026-05-22T10:00:00+00:00",
+    "Start date": "2026-05-18T10:00:00+00:00",
+    "Late": "false",
+    "Completed Date": null,
+    "Labels": null,
+    "Description": "Sub-equipa: Mostra Tecnológica e Networking"
+  },
+  {
+    "Task ID": "No90KBHzQUGWtcPUMnwbLpYAGeKI",
+    "Task Name": "Identificação de empresas para brindes",
+    "Bucket Name": "Equipa de Angariação de Patrocínios",
+    "Status": "Not started",
+    "Priority": "Medium",
+    "Assigned To": null,
+    "Created Date": "2026-03-06T18:25:13.9793973Z",
+    "Due date": "2026-03-16T10:00:00+00:00",
+    "Start date": "2026-03-10T10:00:00+00:00",
+    "Late": "false",
+    "Completed Date": null,
+    "Labels": null,
+    "Description": "Sub-Equipa: Angariação Patrocínios e Parcerias"
+  },
+  {
+    "Task ID": "RyWxD-ELDEq2BrqOWA2j15YAKvUx",
+    "Task Name": "Confirmar Oradores/Moderadores + Definir Identidade Visual",
+    "Bucket Name": "Equipa de Coordenação",
+    "Status": "Not started",
+    "Priority": "Important",
+    "Assigned To": null,
+    "Created Date": "2026-02-16T18:39:07.1041358Z",
+    "Due date": "2026-04-14T10:00:00+00:00",
+    "Start date": null,
+    "Late": "false",
+    "Completed Date": null,
+    "Labels": "Externo",
+    "Description": null
+  },
+  {
+    "Task ID": "W7zMaDo-QE6OUS3Uj9Sa_5YAJVYZ",
+    "Task Name": "Criação do Cronograma",
+    "Bucket Name": "Equipa de Coordenação",
+    "Status": "Completed",
+    "Priority": "Important",
+    "Assigned To": "Cristiana Filipa Cunha Pinheiro",
+    "Created Date": "2026-02-16T16:17:00.7378386Z",
+    "Due date": "2026-02-21T10:00:00+00:00",
+    "Start date": "2026-02-14T10:00:00+00:00",
+    "Late": "false",
+    "Completed Date": "2026-02-21T16:34:02.9515971Z",
+    "Labels": null,
+    "Description": "Feito pela Cristiana Pinheiro no Planner"
+  },
+  {
+    "Task ID": "X4G1raAEoU699Cz7CvheGpYAHAuJ",
+    "Task Name": "Finalização do planeamento do sorteio",
+    "Bucket Name": "Equipa de Acompanhamento e Avaliação",
+    "Status": "Not started",
+    "Priority": "Important",
+    "Assigned To": null,
+    "Created Date": "2026-03-09T20:23:30.3388899Z",
+    "Due date": "2026-03-12T10:00:00+00:00",
+    "Start date": "2026-03-07T10:00:00+00:00",
+    "Late": "false",
+    "Completed Date": null,
+    "Labels": null,
+    "Description": "Planeamento do prémio a atribuir ao participante vencedor do sorteio. \n(A equipa decidiu atribuir 1 prémio a um dos participantes que preenche o questionário de feedback do evento, para motivar o preenchimento dos questionários)"
+  },
+  {
+    "Task ID": "XRXQ99RN8k2U-owA_uWwlpYAKaMn",
+    "Task Name": "Contactar entidades recolhidas",
+    "Bucket Name": "Equipa de Angariação de Patrocínios",
+    "Status": "Not started",
+    "Priority": "Medium",
+    "Assigned To": null,
+    "Created Date": "2026-03-07T23:08:53.6501988Z",
+    "Due date": "2026-03-20T10:00:00+00:00",
+    "Start date": "2026-03-16T10:00:00+00:00",
+    "Late": "false",
+    "Completed Date": null,
+    "Labels": null,
+    "Description": "Sub-equipa: Mostra Tecnológica e Networking"
+  },
+  {
+    "Task ID": "XRbr7Kkde0yMMF0wOokbPpYAF956",
+    "Task Name": "Follow-up com empresas contactadas",
+    "Bucket Name": "Equipa de Angariação de Patrocínios",
+    "Status": "Not started",
+    "Priority": "Medium",
+    "Assigned To": null,
+    "Created Date": "2026-03-06T18:26:38.6119944Z",
+    "Due date": "2026-04-08T10:00:00+00:00",
+    "Start date": "2026-03-25T10:00:00+00:00",
+    "Late": "false",
+    "Completed Date": null,
+    "Labels": null,
+    "Description": "Sub-Equipa: Angariação Patrocínios e Parcerias"
+  },
+  {
+    "Task ID": "XVCERrPhT022cuVQqcaHMpYAI9n1",
+    "Task Name": "Criação de Formulário para colocação de estudantes em equipas",
+    "Bucket Name": "Equipa de Coordenação",
+    "Status": "Completed",
+    "Priority": "Important",
+    "Assigned To": "Rui Miguel Teixeira Borges De Araújo",
+    "Created Date": "2026-02-16T16:15:10.4527753Z",
+    "Due date": "2026-02-16T10:00:00+00:00",
+    "Start date": "2026-02-14T10:00:00+00:00",
+    "Late": "false",
+    "Completed Date": "2026-02-16T16:15:27.4855489Z",
+    "Labels": null,
+    "Description": null
+  },
+  {
+    "Task ID": "YyxKL49TWEeFze30rGTBqpYAPys0",
+    "Task Name": "Recolha de possiveis atividades",
+    "Bucket Name": "Equipa de Angariação de Patrocínios",
+    "Status": "Not started",
+    "Priority": "Medium",
+    "Assigned To": null,
+    "Created Date": "2026-03-07T23:10:01.8861293Z",
+    "Due date": "2026-04-17T10:00:00+00:00",
+    "Start date": "2026-04-13T10:00:00+00:00",
+    "Late": "false",
+    "Completed Date": null,
+    "Labels": null,
+    "Description": "Sub-equipa: Mostra Tecnológica e Networking"
+  },
+  {
+    "Task ID": "ZCLdzzs3Kk6GokokMUhnV5YAEXJn",
+    "Task Name": "Procura de auditórios no Porto",
+    "Bucket Name": "Equipa de Coordenação",
+    "Status": "Completed",
+    "Priority": "Important",
+    "Assigned To": "Ana Sofia Gonçalves Vaz",
+    "Created Date": "2026-02-16T16:13:44.9626663Z",
+    "Due date": "2026-02-21T10:00:00+00:00",
+    "Start date": "2026-02-14T10:00:00+00:00",
+    "Late": "false",
+    "Completed Date": "2026-02-21T13:12:37.6021883Z",
+    "Labels": null,
+    "Description": "ÚNICA RESPOSTA-POLO ZERO"
+  },
+  {
+    "Task ID": "ZiXZEo8AV0qmdscMiDfDVZYAJ-HV",
+    "Task Name": "Elaboração do  formato para os formulários",
+    "Bucket Name": "Equipa de Acompanhamento e Avaliação",
+    "Status": "Not started",
+    "Priority": "Medium",
+    "Assigned To": null,
+    "Created Date": "2026-03-09T20:29:42.5379966Z",
+    "Due date": "2026-03-19T10:00:00+00:00",
+    "Start date": "2026-03-13T10:00:00+00:00",
+    "Late": "false",
+    "Completed Date": null,
+    "Labels": null,
+    "Description": "Desenvolvimento da estrutura e possíveis questões genéricas a incluir nos diversos formulários"
+  },
+  {
+    "Task ID": "__rAu2LH6UWr9-Lh4CjP8pYAGXWK",
+    "Task Name": "Contacto com empresas para brindes",
+    "Bucket Name": "Equipa de Angariação de Patrocínios",
+    "Status": "Not started",
+    "Priority": "Medium",
+    "Assigned To": null,
+    "Created Date": "2026-03-06T18:26:01.6139959Z",
+    "Due date": "2026-03-24T10:00:00+00:00",
+    "Start date": "2026-03-17T10:00:00+00:00",
+    "Late": "false",
+    "Completed Date": null,
+    "Labels": null,
+    "Description": "Sub-Equipa: Angariação Patrocínios e Parcerias"
+  },
+  {
+    "Task ID": "aegTzKh7skmm__Rk5jEOZZYAP6ah",
+    "Task Name": "Confirmação de patrocinadores",
+    "Bucket Name": "Equipa de Angariação de Patrocínios",
+    "Status": "Not started",
+    "Priority": "Medium",
+    "Assigned To": null,
+    "Created Date": "2026-03-06T18:26:53.7760782Z",
+    "Due date": "2026-04-20T10:00:00+00:00",
+    "Start date": "2026-04-09T10:00:00+00:00",
+    "Late": "false",
+    "Completed Date": null,
+    "Labels": null,
+    "Description": "Sub-Equipa: Angariação Patrocínios e Parcerias"
+  },
+  {
+    "Task ID": "akfeAAeurUyX-ArXxRwDUpYAIGf9",
+    "Task Name": "Criação de registo de patrocínios obtidos",
+    "Bucket Name": "Equipa de Angariação de Patrocínios",
+    "Status": "Not started",
+    "Priority": "Medium",
+    "Assigned To": null,
+    "Created Date": "2026-03-06T18:26:23.8183748Z",
+    "Due date": "2026-03-24T10:00:00+00:00",
+    "Start date": "2026-03-17T10:00:00+00:00",
+    "Late": "false",
+    "Completed Date": null,
+    "Labels": null,
+    "Description": "Sub-Equipa: Angariação Patrocínios e Parcerias"
+  },
+  {
+    "Task ID": "b7oiFnasykupIQwA1pCAjJYANKHa",
+    "Task Name": "Método de envio dos certificados",
+    "Bucket Name": "Equipa de Acompanhamento e Avaliação",
+    "Status": "Not started",
+    "Priority": "Medium",
+    "Assigned To": null,
+    "Created Date": "2026-03-09T20:25:23.2667782Z",
+    "Due date": null,
+    "Start date": "2026-03-07T10:00:00+00:00",
+    "Late": "false",
+    "Completed Date": null,
+    "Labels": null,
+    "Description": "Análise e escolha do método de envio/disponibilização dos certificados aos participantes"
+  },
+  {
+    "Task ID": "bGsYbGMJdky_lXE_7iX2NpYADuWc",
+    "Task Name": "Planeamento Operacional",
+    "Bucket Name": "Equipa de Angariação de Patrocínios",
+    "Status": "Not started",
+    "Priority": "Medium",
+    "Assigned To": null,
+    "Created Date": "2026-03-07T23:12:07.0046755Z",
+    "Due date": "2026-05-15T10:00:00+00:00",
+    "Start date": "2026-05-11T10:00:00+00:00",
+    "Late": "false",
+    "Completed Date": null,
+    "Labels": null,
+    "Description": "Sub-equipa: Mostra Tecnológica e Networking"
+  },
+  {
+    "Task ID": "c7ozahQs8EyyyQKyzmWGYJYAGXLC",
+    "Task Name": "Reserva de Auditório",
+    "Bucket Name": "Equipa de Coordenação",
+    "Status": "In progress",
+    "Priority": "Urgent",
+    "Assigned To": null,
+    "Created Date": "2026-02-16T18:36:42.049377Z",
+    "Due date": "2026-04-01T10:00:00+00:00",
+    "Start date": "2026-02-24T10:00:00+00:00",
+    "Late": "false",
+    "Completed Date": null,
+    "Labels": "Externo",
+    "Description": "Começamos a reunir propostas para apresentar na aula de dia (24/02)\nFicou decidio na aula que a localização tem que ser em Felgueiras (24/02)\nNa aula foi decido que em princípio será na casa das artes, a Professora ficou de contactar a pessoa responsável pelo espaço. Estamos à espera do feedback (03/03)"
+  },
+  {
+    "Task ID": "cffsKx9QG0iMO9_rL-gPIpYADoyN",
+    "Task Name": "Envio de pedidos de patrocínio para empresas",
+    "Bucket Name": "Equipa de Angariação de Patrocínios",
+    "Status": "Not started",
+    "Priority": "Medium",
+    "Assigned To": null,
+    "Created Date": "2026-03-06T18:25:39.9290849Z",
+    "Due date": "2026-03-24T10:00:00+00:00",
+    "Start date": "2026-03-17T10:00:00+00:00",
+    "Late": "false",
+    "Completed Date": null,
+    "Labels": null,
+    "Description": "Sub-Equipa: Angariação Patrocínios e Parcerias"
+  },
+  {
+    "Task ID": "d0l3jacYbkmNB5W-UKg5Z5YAK0cM",
+    "Task Name": "Definição do orçamento do que não foi patrocinado",
+    "Bucket Name": "Equipa de Angariação de Patrocínios",
+    "Status": "Not started",
+    "Priority": "Medium",
+    "Assigned To": null,
+    "Created Date": "2026-03-06T18:27:37.9979559Z",
+    "Due date": "2026-05-05T10:00:00+00:00",
+    "Start date": "2026-04-21T10:00:00+00:00",
+    "Late": "false",
+    "Completed Date": null,
+    "Labels": null,
+    "Description": "Sub-Equipa: Angariação Patrocínios e Parcerias"
+  },
+  {
+    "Task ID": "dNp_BA1kC0mDlozOyeh7iZYAP3MN",
+    "Task Name": "Criação do modelo base do Relatório",
+    "Bucket Name": "Equipa de Acompanhamento e Avaliação",
+    "Status": "Not started",
+    "Priority": "Medium",
+    "Assigned To": null,
+    "Created Date": "2026-03-09T20:30:57.6085875Z",
+    "Due date": "2026-03-19T10:00:00+00:00",
+    "Start date": "2026-03-13T10:00:00+00:00",
+    "Late": "false",
+    "Completed Date": null,
+    "Labels": null,
+    "Description": "Definição da estrutura inicial para o relatório final"
+  },
+  {
+    "Task ID": "eHtw7QtkT0KUsnxR2hkrEZYAEcLm",
+    "Task Name": "Início das Inscrições a 12/05",
+    "Bucket Name": "Equipa de Coordenação",
+    "Status": "Not started",
+    "Priority": "Important",
+    "Assigned To": null,
+    "Created Date": "2026-02-16T18:41:35.4968506Z",
+    "Due date": "2026-05-25T10:00:00+00:00",
+    "Start date": "2026-05-12T10:00:00+00:00",
+    "Late": "false",
+    "Completed Date": null,
+    "Labels": "Externo",
+    "Description": "Inscrições abertas até à véspera do seminário ou até esgotarem"
+  },
+  {
+    "Task ID": "ebgcZrv1Y0uxzBj86olsTJYAG7OU",
+    "Task Name": "Formação de Equipas de Trabalho",
+    "Bucket Name": "Equipa de Coordenação",
+    "Status": "Completed",
+    "Priority": "Urgent",
+    "Assigned To": null,
+    "Created Date": "2026-02-16T18:34:23.6195988Z",
+    "Due date": "2026-02-24T10:00:00+00:00",
+    "Start date": null,
+    "Late": "false",
+    "Completed Date": "2026-02-25T17:16:28.5176953Z",
+    "Labels": "Externo",
+    "Description": null
+  },
+  {
+    "Task ID": "f-S_EnqM1UWkAsuV9-LnIZYABSls",
+    "Task Name": "Definição da lista de potenciais patrocinadores",
+    "Bucket Name": "Equipa de Angariação de Patrocínios",
+    "Status": "Not started",
+    "Priority": "Medium",
+    "Assigned To": null,
+    "Created Date": "2026-03-06T18:23:49.4282421Z",
+    "Due date": "2026-03-14T10:00:00+00:00",
+    "Start date": "2026-03-10T10:00:00+00:00",
+    "Late": "false",
+    "Completed Date": null,
+    "Labels": null,
+    "Description": "Sub-Equipa: Angariação Patrocínios e Parcerias"
+  },
+  {
+    "Task ID": "gbeX7bmEf0iuXE5sDwZ2HZYANP8E",
+    "Task Name": "Reunião com a Professora Margarida na aula de 24/2",
+    "Bucket Name": "Equipa de Coordenação",
+    "Status": "Completed",
+    "Priority": "Urgent",
+    "Assigned To": null,
+    "Created Date": "2026-02-16T16:19:48.6389029Z",
+    "Due date": "2026-02-24T10:00:00+00:00",
+    "Start date": "2026-02-24T10:00:00+00:00",
+    "Late": "false",
+    "Completed Date": "2026-02-25T17:16:38.3750674Z",
+    "Labels": null,
+    "Description": "1) Regulamento interno por equipa, ou por subequipa?\n2)\nPerguntar\nà professora como é que fazemos em relação aos estudantes que\nlembram-se a meio do semestre que estão matriculados em SIO. \n3)\nDiscutir as\nexpectativas da equipa de coordenação com a Prof Margarida"
+  },
+  {
+    "Task ID": "j63RXoxTnkSnkR_kxyrtSpYAAImd",
+    "Task Name": "Submissão dos artefactos",
+    "Bucket Name": "Equipa de Acompanhamento e Avaliação",
+    "Status": "Not started",
+    "Priority": "Urgent",
+    "Assigned To": null,
+    "Created Date": "2026-03-09T20:39:34.3119409Z",
+    "Due date": "2026-06-04T10:00:00+00:00",
+    "Start date": "2026-06-04T10:00:00+00:00",
+    "Late": "false",
+    "Completed Date": null,
+    "Labels": null,
+    "Description": null
+  },
+  {
+    "Task ID": "jybeLvzG5kStFlTcY4U715YAEMwf",
+    "Task Name": "Preparação do email / proposta de patrocínio",
+    "Bucket Name": "Equipa de Angariação de Patrocínios",
+    "Status": "Not started",
+    "Priority": "Medium",
+    "Assigned To": null,
+    "Created Date": "2026-03-06T18:24:49.2500834Z",
+    "Due date": "2026-03-16T10:00:00+00:00",
+    "Start date": "2026-03-10T10:00:00+00:00",
+    "Late": "false",
+    "Completed Date": null,
+    "Labels": null,
+    "Description": "Sub-Equipa: Angariação Patrocínios e Parcerias"
+  },
+  {
+    "Task ID": "n-o0JMT1xEqW0HKPDPHdbZYABVJA",
+    "Task Name": "Revisão de todos os artefactos necessários para a entrega",
+    "Bucket Name": "Equipa de Acompanhamento e Avaliação",
+    "Status": "Not started",
+    "Priority": "Important",
+    "Assigned To": null,
+    "Created Date": "2026-03-09T20:38:18.9034326Z",
+    "Due date": "2026-06-03T10:00:00+00:00",
+    "Start date": "2026-06-03T10:00:00+00:00",
+    "Late": "false",
+    "Completed Date": null,
+    "Labels": null,
+    "Description": "Revisão de todos os artefactos necessários para a entrega"
+  },
+  {
+    "Task ID": "nYFJgUEAu0KC_3fklCl4YZYAMaaK",
+    "Task Name": "Estudo sobre Formação de Equipas de Trabalho",
+    "Bucket Name": "Equipa de Coordenação",
+    "Status": "Completed",
+    "Priority": "Important",
+    "Assigned To": "Joel Sampaio Pinto;Ana Sofia Gonçalves Vaz;Maria Do Carmo Brito Carneiro;Rui Miguel Teixeira Borges De Araújo;Cristiana Filipa Cunha Pinheiro",
+    "Created Date": "2026-02-16T16:10:12.0641335Z",
+    "Due date": "2026-02-21T10:00:00+00:00",
+    "Start date": "2026-02-14T10:00:00+00:00",
+    "Late": "false",
+    "Completed Date": "2026-02-21T13:11:37.2645017Z",
+    "Labels": null,
+    "Description": "1)\nSofia - Programa e Conteúdos\n2)\nMaria - Comunicação e Divulgação \n3)\nJoel - Logística e Infraestruturas \n4)\nCristiana - Angariação de patrocínios – coffee break \n5)\nRui - Acompanhamento e Avaliação"
+  },
+  {
+    "Task ID": "oIud4D1O2Ue480Pd3hxy5JYALOPO",
+    "Task Name": "Recolha de necessidades para apresentações dos convidados",
+    "Bucket Name": "Equipa de Angariação de Patrocínios",
+    "Status": "Not started",
+    "Priority": "Medium",
+    "Assigned To": null,
+    "Created Date": "2026-03-07T23:09:29.961872Z",
+    "Due date": "2026-03-27T10:00:00+00:00",
+    "Start date": "2026-03-23T10:00:00+00:00",
+    "Late": "false",
+    "Completed Date": null,
+    "Labels": null,
+    "Description": "Sub-equipa: Mostra Tecnológica e Networking"
+  },
+  {
+    "Task ID": "qf4N2uRg8EuHP-zdElsbdpYAMwAa",
+    "Task Name": "Redação das conclusões",
+    "Bucket Name": "Equipa de Acompanhamento e Avaliação",
+    "Status": "Not started",
+    "Priority": "Medium",
+    "Assigned To": null,
+    "Created Date": "2026-03-09T20:36:58.0403705Z",
+    "Due date": "2026-06-02T10:00:00+00:00",
+    "Start date": "2026-05-26T10:00:00+00:00",
+    "Late": "false",
+    "Completed Date": null,
+    "Labels": null,
+    "Description": "Redação do Relatório Final"
+  },
+  {
+    "Task ID": "r2qlKSBgYUy1yAzb1ReumpYAG6H5",
+    "Task Name": "Confirmação de brindes",
+    "Bucket Name": "Equipa de Angariação de Patrocínios",
+    "Status": "Not started",
+    "Priority": "Medium",
+    "Assigned To": null,
+    "Created Date": "2026-03-06T18:27:12.0281594Z",
+    "Due date": "2026-04-20T10:00:00+00:00",
+    "Start date": "2026-04-09T10:00:00+00:00",
+    "Late": "false",
+    "Completed Date": null,
+    "Labels": null,
+    "Description": "Sub-Equipa: Angariação Patrocínios e Parcerias"
+  },
+  {
+    "Task ID": "t03OODGdeEWy153rZYRrIZYAMEtl",
+    "Task Name": "Confirmação logística do coffee break",
+    "Bucket Name": "Equipa de Angariação de Patrocínios",
+    "Status": "Not started",
+    "Priority": "Medium",
+    "Assigned To": null,
+    "Created Date": "2026-03-06T18:28:41.9795781Z",
+    "Due date": "2026-05-18T10:00:00+00:00",
+    "Start date": "2026-05-10T10:00:00+00:00",
+    "Late": "false",
+    "Completed Date": null,
+    "Labels": null,
+    "Description": "Sub-Equipa: Angariação Patrocínios e Parcerias"
+  },
+  {
+    "Task ID": "vcHiWPPzPUOaUmcn_neadZYANkIZ",
+    "Task Name": "Confirmação de Patrocínios e Adaptações na Logística",
+    "Bucket Name": "Equipa de Coordenação",
+    "Status": "Not started",
+    "Priority": "Important",
+    "Assigned To": null,
+    "Created Date": "2026-02-16T18:43:08.7663195Z",
+    "Due date": "2026-05-19T10:00:00+00:00",
+    "Start date": null,
+    "Late": "false",
+    "Completed Date": null,
+    "Labels": "Externo",
+    "Description": null
+  },
+  {
+    "Task ID": "w8PJMuh-MEmue8TaUe1tepYAFV8F",
+    "Task Name": "Criação do Regulamento Interno da Equipa de Coordenação",
+    "Bucket Name": "Equipa de Coordenação",
+    "Status": "Completed",
+    "Priority": "Important",
+    "Assigned To": "Joel Sampaio Pinto",
+    "Created Date": "2026-02-16T16:16:13.9235287Z",
+    "Due date": "2026-02-21T10:00:00+00:00",
+    "Start date": "2026-02-14T10:00:00+00:00",
+    "Late": "false",
+    "Completed Date": "2026-02-21T16:36:00.5532346Z",
+    "Labels": null,
+    "Description": "https://ipppt.sharepoint.com/teams/sio-coordination/Shared%20Documents/Forms/AllItems.aspx?id=%2Fteams%2Fsio%2Dcoordination%2FShared%20Documents%2FEquipa%20de%20Coordena%C3%A7%C3%A3o%20Geral%2FRegulamentos%2Fregulamento%2Dinterno%2Dcoordenacao%2Ddraft%2Epdf&parent=%2Fteams%2Fsio%2Dcoordination%2FShared%20Documents%2FEquipa%20de%20Coordena%C3%A7%C3%A3o%20Geral%2FRegulamentos"
+  },
+  {
+    "Task ID": "wayEfmHkykq-rEVflRTnxZYACvb-",
+    "Task Name": "Organização das atividades",
+    "Bucket Name": "Equipa de Angariação de Patrocínios",
+    "Status": "Not started",
+    "Priority": "Medium",
+    "Assigned To": null,
+    "Created Date": "2026-03-07T23:11:40.9426143Z",
+    "Due date": "2026-04-30T10:00:00+00:00",
+    "Start date": "2026-04-27T10:00:00+00:00",
+    "Late": "false",
+    "Completed Date": null,
+    "Labels": null,
+    "Description": "Sub-equipa: Mostra Tecnológica e Networking"
+  },
+  {
+    "Task ID": "wdX_NJfzhkuxzTaTzLuNo5YADego",
+    "Task Name": "Preparação final para o seminário",
+    "Bucket Name": "Equipa de Angariação de Patrocínios",
+    "Status": "Not started",
+    "Priority": "Medium",
+    "Assigned To": null,
+    "Created Date": "2026-03-06T18:29:58.5042098Z",
+    "Due date": "2026-05-24T10:00:00+00:00",
+    "Start date": "2026-05-21T10:00:00+00:00",
+    "Late": "false",
+    "Completed Date": null,
+    "Labels": null,
+    "Description": "Sub-Equipa: Angariação Patrocínios e Parcerias"
+  },
+  {
+    "Task ID": "yCyhRQq9qESK-uk-nBG3jZYAOxZd",
+    "Task Name": "Composição do Programa",
+    "Bucket Name": "Equipa de Coordenação",
+    "Status": "Not started",
+    "Priority": "Important",
+    "Assigned To": null,
+    "Created Date": "2026-02-16T18:39:35.736209Z",
+    "Due date": "2026-04-21T10:00:00+00:00",
+    "Start date": null,
+    "Late": "false",
+    "Completed Date": null,
+    "Labels": "Externo",
+    "Description": null
+  },
+  {
+    "Task ID": "yiOG6dDgDEC4jnqhnOZ345YADbh3",
+    "Task Name": "Convidar Oradores e Moderadores",
+    "Bucket Name": "Equipa de Coordenação",
+    "Status": "Not started",
+    "Priority": "Important",
+    "Assigned To": null,
+    "Created Date": "2026-02-16T18:38:26.5950831Z",
+    "Due date": "2026-03-24T10:00:00+00:00",
+    "Start date": null,
+    "Late": "false",
+    "Completed Date": null,
+    "Labels": "Externo",
+    "Description": null
+  }
 ];
 
-const EXPORT_DATE = "2026-02-24";
+const EXPORT_DATE = "2026-03-09";
 
-// Bucket colours
-const BUCKET_COLORS = {
-  "Equipa de Coordenação": "var(--coord)",
-  "Equipa de Logística e Infraestrutura": "var(--logistica)",
-  "Equipa de Programa e Conteúdos": "var(--programa)",
-  "Equipa de Comunicação e Divulgação": "var(--comms)",
-  "Equipa de Angariação de Patrocínios": "var(--patroc)",
-  "Equipa de Acompanhamento e Avaliação": "var(--acomp)"
-};
 const BUCKET_COLORS_HEX = {
   "Equipa de Coordenação": "#6c8eff",
-  "Equipa de Logística e Infraestrutura": "#f97316",
+  "Equipa de Logística e Infraestruturas": "#f97316",
   "Equipa de Programa e Conteúdos": "#22d3a0",
   "Equipa de Comunicação e Divulgação": "#e879f9",
   "Equipa de Angariação de Patrocínios": "#facc15",
   "Equipa de Acompanhamento e Avaliação": "#f87171"
 };
 
-// ── STATE ──────────────────────────────────────────────────────────
-let dayWidth = 18; // px per day, adjustable via zoom
+// Ordem canónica dos buckets (conforme o Planner)
+const BUCKET_ORDER = [
+  "Equipa de Coordenação",
+  "Equipa de Logística e Infraestruturas",
+  "Equipa de Programa e Conteúdos",
+  "Equipa de Comunicação e Divulgação",
+  "Equipa de Angariação de Patrocínios",
+  "Equipa de Acompanhamento e Avaliação"
+];
+
+let dayWidth = 14;
 let filterBucket = 'all';
 let filterStatus = 'all';
 let collapsedBuckets = new Set();
-// Sempre calculado no momento do loading da página — nunca em cache
+
+// Data de hoje sempre calculada dinamicamente no browser — nunca hardcoded
 function getToday() {
   const d = new Date();
   d.setHours(0, 0, 0, 0);
@@ -823,26 +1231,28 @@ function getToday() {
 }
 const today = getToday();
 
-// ── HELPERS ───────────────────────────────────────────────────────
 function parseDate(str) {
   if (!str) return null;
   const m = String(str).match(/^(\d{4})-(\d{2})-(\d{2})/);
   if (!m) return null;
-  // Criar sempre em hora local (sem UTC) para evitar desfasamento de fuso horário
+  // Hora local para evitar desfasamento de fuso horário
   const d = new Date(parseInt(m[1]), parseInt(m[2])-1, parseInt(m[3]));
   d.setHours(0,0,0,0);
   return d;
 }
+
 function daysBetween(a, b) {
-  // Usar UTC para evitar erros de fuso horário (ex: Portugal UTC+0/+1)
+  // Date.UTC evita erros de DST / fuso horário (Portugal UTC+0/+1)
   const utcA = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
   const utcB = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
   return Math.round((utcB - utcA) / 86400000);
 }
+
 function formatDate(d) {
   if (!d) return '—';
   return d.toLocaleDateString('pt-PT', {day:'2-digit', month:'short', year:'numeric'});
 }
+
 function shortName(full) {
   if (!full) return '—';
   const parts = full.trim().split(' ');
@@ -850,7 +1260,6 @@ function shortName(full) {
   return parts[0] + ' ' + parts[parts.length-1];
 }
 
-// Derive chart start/end from all task dates
 function getChartBounds() {
   let minDate = new Date(2026,0,1);
   let maxDate = new Date(2026,5,30);
@@ -860,7 +1269,6 @@ function getChartBounds() {
     if (s && s < minDate) minDate = new Date(s);
     if (e && e > maxDate) maxDate = new Date(e);
   });
-  // Add padding: 1 week before, 2 weeks after
   minDate.setDate(minDate.getDate() - 7);
   maxDate.setDate(maxDate.getDate() + 14);
   // Snap to Monday
@@ -869,10 +1277,8 @@ function getChartBounds() {
   return { minDate, maxDate };
 }
 
-// ── PROCESS TASKS ─────────────────────────────────────────────────
-// Recalcula sempre com base na data de hoje no momento do loading
 function processTasks() {
-  const now = getToday(); // data real de hoje, calculada agora
+  const now = getToday();
   return RAW_TASKS.map(t => {
     const due = parseDate(t['Due date']);
     let start = parseDate(t['Start date']);
@@ -880,28 +1286,26 @@ function processTasks() {
       if (due) { start = new Date(due); start.setDate(start.getDate() - 7); }
       else start = parseDate(t['Created Date']) || new Date();
     }
-    const isMilestone = start.getTime() === due?.getTime();
-    const isLate = t.Status !== 'Completed' && due && due < now;
-    const progress = t.Status === 'Completed' ? 100 : t.Status === 'In progress' ? 50 : 0;
+    const isMilestone = due && start.getTime() === due.getTime();
+    const isLate = t['Status'] !== 'Completed' && due && due < now;
+    const progress = t['Status'] === 'Completed' ? 100 : t['Status'] === 'In progress' ? 50 : 0;
     return { ...t, startDate: start, dueDate: due, isMilestone, isLate, progress };
   });
 }
 
-// ── GROUP BY BUCKET ───────────────────────────────────────────────
 function groupByBucket(tasks) {
   const groups = {};
-  const order = [];
   tasks.forEach(t => {
-    if (!groups[t['Bucket Name']]) {
-      groups[t['Bucket Name']] = [];
-      order.push(t['Bucket Name']);
-    }
-    groups[t['Bucket Name']].push(t);
+    const b = t['Bucket Name'];
+    if (!groups[b]) groups[b] = [];
+    groups[b].push(t);
   });
-  return order.map(name => ({ name, tasks: groups[name] }));
+  // Ordenar pelos buckets na ordem canónica
+  return BUCKET_ORDER
+    .filter(name => groups[name] && groups[name].length > 0)
+    .map(name => ({ name, tasks: groups[name] }));
 }
 
-// ── RENDER ────────────────────────────────────────────────────────
 const ROW_H = 36;
 const BUCKET_H = 31;
 
@@ -912,14 +1316,16 @@ function init() {
   allTasks = processTasks();
   buckets = groupByBucket(allTasks);
 
-  document.getElementById('exportDate').textContent = 'Exportado em: ' + EXPORT_DATE + '  |  Hoje: ' + today.toLocaleDateString('pt-PT', {weekday:'short', day:'2-digit', month:'2-digit', year:'numeric'});
+  const todayStr = today.toLocaleDateString('pt-PT', {weekday:'short', day:'2-digit', month:'2-digit', year:'numeric'});
+  document.getElementById('exportDate').textContent = 'Exportado em: ' + EXPORT_DATE + '  |  Hoje: ' + todayStr;
 
-  // populate filter
   const sel = document.getElementById('filterBucket');
-  buckets.forEach(b => {
-    const o = document.createElement('option');
-    o.value = b.name; o.textContent = b.name;
-    sel.appendChild(o);
+  BUCKET_ORDER.forEach(name => {
+    if (buckets.find(b => b.name === name)) {
+      const o = document.createElement('option');
+      o.value = name; o.textContent = name.replace('Equipa de ','');
+      sel.appendChild(o);
+    }
   });
   sel.addEventListener('change', e => { filterBucket = e.target.value; render(); });
   document.getElementById('filterStatus').addEventListener('change', e => { filterStatus = e.target.value; render(); });
@@ -931,9 +1337,9 @@ function init() {
 
 function renderStats() {
   const total = allTasks.length;
-  const done = allTasks.filter(t => t.Status === 'Completed').length;
-  const prog = allTasks.filter(t => t.Status === 'In progress').length;
-  const todo = allTasks.filter(t => t.Status === 'Not started').length;
+  const done = allTasks.filter(t => t['Status'] === 'Completed').length;
+  const prog = allTasks.filter(t => t['Status'] === 'In progress').length;
+  const todo = allTasks.filter(t => t['Status'] === 'Not started').length;
   const late = allTasks.filter(t => t.isLate).length;
   const pct = Math.round((done/total)*100);
   document.getElementById('statsBar').innerHTML = `
@@ -954,24 +1360,20 @@ function getFilteredBuckets() {
     ...b,
     tasks: b.tasks.filter(t => {
       if (filterBucket !== 'all' && t['Bucket Name'] !== filterBucket) return false;
-      if (filterStatus !== 'all' && t.Status !== filterStatus) return false;
+      if (filterStatus !== 'all' && t['Status'] !== filterStatus) return false;
       return true;
     })
-  })).filter(b => filterBucket === 'all' || b.name === filterBucket || b.tasks.length > 0);
+  })).filter(b => b.tasks.length > 0);
 }
 
 function render() {
   const { minDate, maxDate } = chartBounds;
   const totalDays = daysBetween(minDate, maxDate);
   const totalWidth = totalDays * dayWidth;
-
   const visibleBuckets = getFilteredBuckets();
 
-  // ── LEFT PANEL ──
   const taskList = document.getElementById('taskList');
   taskList.innerHTML = '';
-
-  // ── CHART ──
   const chartInner = document.getElementById('chartInner');
   chartInner.innerHTML = '';
   chartInner.style.width = totalWidth + 'px';
@@ -981,13 +1383,9 @@ function render() {
   timeHeader.className = 'time-header';
   timeHeader.style.width = totalWidth + 'px';
 
-  // Generate weeks
   const weeks = [];
   let cur = new Date(minDate);
-  while (cur <= maxDate) {
-    weeks.push(new Date(cur));
-    cur.setDate(cur.getDate() + 7);
-  }
+  while (cur <= maxDate) { weeks.push(new Date(cur)); cur.setDate(cur.getDate() + 7); }
 
   // Month labels
   const months = {};
@@ -1004,19 +1402,17 @@ function render() {
     timeHeader.appendChild(el);
   });
 
-  // Week cells
+  // Week cells — formato "23/02 – 27/02" (Seg → Sex)
   weeks.forEach(w => {
     const cell = document.createElement('div');
     cell.className = 'week-cell';
-    // Comparar apenas datas (sem horas) para evitar erros de fuso horário
     const wDate = new Date(w.getFullYear(), w.getMonth(), w.getDate());
     const wEnd = new Date(wDate); wEnd.setDate(wEnd.getDate() + 7);
     const todayDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
-    const isToday = todayDate >= wDate && todayDate < wEnd;
-    if (isToday) cell.classList.add('today-week');
+    if (todayDate >= wDate && todayDate < wEnd) cell.classList.add('today-week');
     cell.style.width = (7 * dayWidth) + 'px';
     cell.style.flexShrink = '0';
-    const weekEnd = new Date(w); weekEnd.setDate(weekEnd.getDate() + 4); // Seg → Sex
+    const weekEnd = new Date(w); weekEnd.setDate(weekEnd.getDate() + 4);
     const startLabel = w.toLocaleDateString('pt-PT', {day:'2-digit', month:'2-digit'});
     const endLabel = weekEnd.toLocaleDateString('pt-PT', {day:'2-digit', month:'2-digit'});
     cell.textContent = `${startLabel} – ${endLabel}`;
@@ -1024,12 +1420,10 @@ function render() {
   });
   chartInner.appendChild(timeHeader);
 
-  // Chart rows container
   const chartRows = document.createElement('div');
   chartRows.className = 'chart-rows';
   chartRows.style.position = 'relative';
 
-  // Grid lines
   let totalRowsHeight = 0;
   visibleBuckets.forEach(b => {
     totalRowsHeight += BUCKET_H;
@@ -1052,7 +1446,7 @@ function render() {
     chartRows.appendChild(line);
   });
 
-  // Today line
+  // Linha HOJE com label dinâmico
   if (today >= minDate && today <= maxDate) {
     const x = daysBetween(minDate, today) * dayWidth;
     const tl = document.createElement('div');
@@ -1064,7 +1458,6 @@ function render() {
     chartRows.appendChild(tl);
   }
 
-  // Render each bucket
   visibleBuckets.forEach(b => {
     const color = BUCKET_COLORS_HEX[b.name] || '#6c8eff';
     const collapsed = collapsedBuckets.has(b.name);
@@ -1084,24 +1477,23 @@ function render() {
     });
     taskList.appendChild(bHeader);
 
-    // Chart: bucket spacer
     const spacer = document.createElement('div');
     spacer.className = 'bucket-spacer';
     spacer.style.width = totalWidth + 'px';
     chartRows.appendChild(spacer);
 
     if (!collapsed) {
-      b.tasks.forEach((t, idx) => {
+      b.tasks.forEach(t => {
         // Left row
         const row = document.createElement('div');
         row.className = 'task-row';
         row.dataset.id = t['Task ID'];
-        const statusKey = t.Status.replace(/ /g, '-');
+        const statusKey = t['Status'].replace(/ /g, '-');
         const firstAssignee = t['Assigned To'] ? t['Assigned To'].split(';')[0] : null;
         row.innerHTML = `
           <div class="task-name">${t['Task Name']}${t.isLate ? '<span class="late-icon">⚠</span>' : ''}</div>
           <div class="task-assignee">${firstAssignee ? shortName(firstAssignee) : '—'}</div>
-          <div><span class="status-badge status-${statusKey}">${t.Status === 'Completed' ? '✓ Feito' : t.Status === 'In progress' ? '⟳ Prog.' : '○ Início'}</span></div>`;
+          <div><span class="status-badge status-${statusKey}">${t['Status'] === 'Completed' ? '✓ Feito' : t['Status'] === 'In progress' ? '⟳ Prog.' : '○ Início'}</span></div>`;
         taskList.appendChild(row);
         row.addEventListener('click', () => openDetailPanel(t));
 
@@ -1113,15 +1505,13 @@ function render() {
         rowBg.className = 'row-bg';
         chartRow.appendChild(rowBg);
 
-        // Determine bar color
         let barColor;
         if (t.isLate) barColor = '#ef4444';
-        else if (t.Status === 'Completed') barColor = '#22c55e';
-        else if (t.Status === 'In progress') barColor = '#3b82f6';
+        else if (t['Status'] === 'Completed') barColor = '#22c55e';
+        else if (t['Status'] === 'In progress') barColor = '#3b82f6';
         else barColor = '#475569';
 
         if (t.isMilestone) {
-          // Draw diamond
           if (t.dueDate) {
             const x = daysBetween(minDate, t.dueDate) * dayWidth;
             const diamond = document.createElement('div');
@@ -1142,7 +1532,7 @@ function render() {
             bar.style.left = x1 + 'px';
             bar.style.width = w + 'px';
             bar.style.background = barColor;
-            bar.style.opacity = t.Status === 'Not started' ? '0.7' : '1';
+            bar.style.opacity = t['Status'] === 'Not started' ? '0.7' : '1';
             if (t.progress > 0 && t.progress < 100) {
               const prog = document.createElement('div');
               prog.className = 'bar-progress';
@@ -1177,14 +1567,22 @@ function render() {
 
   chartInner.appendChild(chartRows);
 
-  // Sync vertical scroll
+  // Sync vertical scroll (evitar loops de evento)
   const taskListEl = document.getElementById('taskList');
   const chartScrollEl = document.getElementById('chartScroll');
-  taskListEl.addEventListener('scroll', () => { chartScrollEl.scrollTop = taskListEl.scrollTop; }, { passive:true });
-  chartScrollEl.addEventListener('scroll', () => { taskListEl.scrollTop = chartScrollEl.scrollTop; }, { passive:true });
+  let syncingL = false, syncingR = false;
+  taskListEl.addEventListener('scroll', () => {
+    if (syncingL) return; syncingR = true;
+    chartScrollEl.scrollTop = taskListEl.scrollTop;
+    setTimeout(() => syncingR = false, 0);
+  }, { passive:true });
+  chartScrollEl.addEventListener('scroll', () => {
+    if (syncingR) return; syncingL = true;
+    taskListEl.scrollTop = chartScrollEl.scrollTop;
+    setTimeout(() => syncingL = false, 0);
+  }, { passive:true });
 }
 
-// ── TOOLTIP (hover rápido) ─────────────────────────────────────────
 const tooltip = document.getElementById('tooltip');
 function attachTooltip(el, t) {
   el.addEventListener('mouseenter', e => showTooltip(e, t));
@@ -1193,13 +1591,12 @@ function attachTooltip(el, t) {
   el.addEventListener('click', e => { e.stopPropagation(); hideTooltip(); openDetailPanel(t); });
 }
 function showTooltip(e, t) {
-  const statusLabel = t.Status === 'Completed' ? '✓ Concluído' : t.Status === 'In progress' ? '⟳ Em progresso' : '○ Por iniciar';
+  const statusLabel = t['Status'] === 'Completed' ? '✓ Concluído' : t['Status'] === 'In progress' ? '⟳ Em progresso' : '○ Por iniciar';
   tooltip.innerHTML = `
     <div class="tt-title">${t['Task Name']}</div>
     <div style="font-size:11px;color:var(--text-dim);margin-top:4px">${statusLabel} · ${formatDate(t.dueDate)}</div>
     ${t.isLate ? '<div style="font-size:10px;color:#ef4444;margin-top:4px">⚠ Em atraso</div>' : ''}
-    <div class="tt-hint">🖱 Clica para ver detalhes e notas</div>
-  `;
+    <div class="tt-hint">🖱 Clica para ver detalhes e notas</div>`;
   tooltip.classList.add('visible');
   moveTooltip(e);
 }
@@ -1213,20 +1610,28 @@ function moveTooltip(e) {
 }
 function hideTooltip() { tooltip.classList.remove('visible'); }
 
-// ── DETAIL PANEL ───────────────────────────────────────────────────
 function openDetailPanel(t) {
   const statusColors = { 'Completed': '#22c55e', 'In progress': '#3b82f6', 'Not started': '#64748b' };
   const statusLabels = { 'Completed': '✓ Concluído', 'In progress': '⟳ Em progresso', 'Not started': '○ Por iniciar' };
-  const statusBg =     { 'Completed': '#14532d', 'In progress': '#1e3a5f', 'Not started': '#1e2333' };
-  const color = t.isLate ? '#ef4444' : (statusColors[t.Status] || '#64748b');
+  const statusBg =     { 'Completed': '#14532d',  'In progress': '#1e3a5f',  'Not started': '#1e2333' };
+  const color = t.isLate ? '#ef4444' : (statusColors[t['Status']] || '#64748b');
 
-  // Header
   document.getElementById('dpStatusDot').style.background = color;
   document.getElementById('dpTitle').textContent = t['Task Name'];
 
-  // Meta grid
   const meta = document.getElementById('dpMeta');
-  const statusBadge = `<span class="dp-status-badge" style="background:${statusBg[t.Status]};color:${statusColors[t.Status]}">${statusLabels[t.Status]}</span>`;
+  const statusBadge = `<span class="dp-status-badge" style="background:${statusBg[t['Status']]};color:${statusColors[t['Status']]}">${statusLabels[t['Status']]}</span>`;
+  const completedRow = t['Completed Date'] ? `
+    <div class="dp-meta-item">
+      <div class="dp-meta-label">Concluído em</div>
+      <div class="dp-meta-value" style="color:#22c55e">${formatDate(parseDate(t['Completed Date']))}</div>
+    </div>` : '';
+  const labelRow = t['Labels'] ? `
+    <div class="dp-meta-item" style="grid-column:1/-1">
+      <div class="dp-meta-label">Label</div>
+      <div class="dp-meta-value"><span style="background:#2d2a14;color:#facc15;padding:2px 8px;border-radius:4px;font-size:11px">🏷 ${t['Labels']}</span></div>
+    </div>` : '';
+
   meta.innerHTML = `
     <div class="dp-meta-item">
       <div class="dp-meta-label">Estado</div>
@@ -1234,7 +1639,7 @@ function openDetailPanel(t) {
     </div>
     <div class="dp-meta-item">
       <div class="dp-meta-label">Prioridade</div>
-      <div class="dp-meta-value">${t.Priority === 'Urgent' ? '🔴 Urgente' : t.Priority === 'Important' ? '🟡 Importante' : t.Priority || '—'}</div>
+      <div class="dp-meta-value">${t['Priority'] === 'Urgent' ? '🔴 Urgente' : t['Priority'] === 'Important' ? '🟡 Importante' : t['Priority'] || '—'}</div>
     </div>
     <div class="dp-meta-item">
       <div class="dp-meta-label">Data de início</div>
@@ -1244,58 +1649,43 @@ function openDetailPanel(t) {
       <div class="dp-meta-label">Data limite</div>
       <div class="dp-meta-value" style="${t.isLate ? 'color:#ef4444' : ''}">${formatDate(t.dueDate)}${t.isLate ? ' ⚠' : ''}</div>
     </div>
-    ${t['Completed Date'] ? `
-    <div class="dp-meta-item">
-      <div class="dp-meta-label">Concluído em</div>
-      <div class="dp-meta-value" style="color:#22c55e">${formatDate(parseDate(t['Completed Date']))}</div>
-    </div>` : ''}
+    ${completedRow}
     <div class="dp-meta-item">
       <div class="dp-meta-label">Equipa</div>
       <div class="dp-meta-value" style="color:${BUCKET_COLORS_HEX[t['Bucket Name']] || '#6c8eff'}">${t['Bucket Name'].replace('Equipa de ','')}</div>
     </div>
-    ${t.Labels ? `
-    <div class="dp-meta-item" style="grid-column:1/-1">
-      <div class="dp-meta-label">Label</div>
-      <div class="dp-meta-value"><span style="background:#2d2a14;color:#facc15;padding:2px 8px;border-radius:4px;font-size:11px">🏷 ${t.Labels}</span></div>
-    </div>` : ''}
-  `;
+    ${labelRow}`;
 
-  // Notes section
   const notes = document.getElementById('dpNotesSection');
   const assignees = t['Assigned To'] ? t['Assigned To'].split(';').map(s => s.trim()).filter(Boolean) : [];
   const avatarColors = ['#6c8eff','#22d3a0','#e879f9','#facc15','#f97316','#f87171'];
-
-  notes.innerHTML = `
-    <div class="dp-section-label">📝 Notas da Tarefa</div>
-    ${t.Description
-      ? `<div class="dp-notes-content">${escHtml(t.Description)}</div>`
-      : `<div class="dp-notes-empty">Sem notas para esta tarefa.<br>Adiciona notas no Planner para as ver aqui.</div>`
-    }
-    ${assignees.length ? `
+  const assigneesHtml = assignees.length ? `
     <div class="dp-assignees">
       <div class="dp-section-label" style="margin-top:20px">👥 Responsáveis</div>
       <div class="dp-assignee-list">
         ${assignees.map((a, i) => {
           const initials = a.split(' ').filter(Boolean).map(w=>w[0]).slice(0,2).join('').toUpperCase();
           return `<div class="dp-assignee-chip">
-            <div class="dp-assignee-avatar" style="background:${avatarColors[i % avatarColors.length]}">${initials}</div>
-            ${a}
-          </div>`;
+            <div class="dp-assignee-avatar" style="background:${avatarColors[i % avatarColors.length]}">${initials}</div>${a}</div>`;
         }).join('')}
       </div>
-    </div>` : ''}
-  `;
+    </div>` : '';
 
-  // Footer
+  notes.innerHTML = `
+    <div class="dp-section-label">📝 Notas da Tarefa</div>
+    ${t['Description']
+      ? `<div class="dp-notes-content">${escHtml(t['Description'])}</div>`
+      : `<div class="dp-notes-empty">Sem notas para esta tarefa.<br>Adiciona notas no Planner para as ver aqui.</div>`}
+    ${assigneesHtml}`;
+
   const footer = document.getElementById('dpFooter');
-  const progColor = t.isLate ? '#ef4444' : (statusColors[t.Status] || '#64748b');
+  const progColor = t.isLate ? '#ef4444' : (statusColors[t['Status']] || '#64748b');
   footer.innerHTML = `
     ${t.isLate ? '<div class="dp-late-badge">⚠ Em atraso</div>' : ''}
     <div style="font-size:11px;color:var(--text-muted);flex-shrink:0">Progresso ${t.progress}%</div>
     <div class="dp-progress-bar">
       <div class="dp-progress-fill" style="width:${t.progress}%;background:${progColor}"></div>
-    </div>
-  `;
+    </div>`;
 
   document.getElementById('detailOverlay').classList.add('open');
   document.getElementById('detailPanel').classList.add('open');
@@ -1312,18 +1702,17 @@ function escHtml(str) {
 
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDetailPanel(); });
 
-// ── ZOOM & SCROLL ─────────────────────────────────────────────────
 function changeZoom(delta) {
   dayWidth = Math.min(60, Math.max(6, dayWidth + delta));
   render();
 }
+
 function scrollToToday() {
   const { minDate } = chartBounds;
   const x = daysBetween(minDate, today) * dayWidth - 200;
   document.getElementById('chartScroll').scrollLeft = Math.max(0, x);
 }
 
-// ── BOOT ─────────────────────────────────────────────────────────
 init();
 </script>
 </body>
